@@ -13,9 +13,10 @@ import { Router } from '@angular/router';
 })
 
 export class StartScreenComponent {
+  
   constructor(private router: Router) { };
   
-  newGame(): void {
+  public newGame(): void {
     this.router.navigateByUrl("/game");
   };
 };

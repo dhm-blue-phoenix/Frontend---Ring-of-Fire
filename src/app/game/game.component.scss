@@ -1,0 +1,51 @@
+@use "../../globle-mixins.scss" as *;
+
+.field {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    background-image: url("/assets/background-field.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @include flexBox();
+};
+
+.card-stack {
+    position: relative;
+
+    img {
+        position: absolute;
+        width: 120px;
+    };
+};
+
+.top-card {
+    cursor: pointer;
+    transition: all 120ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.1) translateY(-15px);
+    };
+};
+
+.pick-card {
+    animation: pick-card-animation 1.25s ease-in-out;
+    transform: scale(1.1) translateX(140px) translateY(-180px) rotate(-10deg);
+};
+
+@keyframes pick-card-animation {
+    0% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.7);
+    }
+    60% {
+        transform: scale(1.7);
+    }
+    100% {
+        transform: scale(1.1) translateX(140px) translateY(-180px) rotate(-10deg);
+    };
+};

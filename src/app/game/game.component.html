@@ -1,1 +1,14 @@
-<p>game works!</p>
+<section>
+    <div class="field">
+        <div class="card-stack">
+            @for (num of [0, 1, 2, 3, 4]; track num; let i = $index) {
+            <img [style.right.px]="i * 5" src="/assets/cards/card_cover.png" alt="card">
+            }
+            @if (pickCardAnimation) {
+                <img (click)="takeCard()" class="pick-card" [style.right.px]="25" src="/assets/cards/ace_1.png" alt="card">
+            } @else {
+                <img (click)="takeCard()" class="top-card" [style.right.px]="25" src="/assets/cards/card_cover.png" alt="card">
+            }
+        </div>
+    </div>
+</section>
