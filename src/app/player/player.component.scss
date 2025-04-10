@@ -1,0 +1,23 @@
+@use "../../global-mixins.scss" as *;
+
+.player {
+    width: 300px;
+    background-color: orange;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 4px;
+
+    @include flexBox($jc: flex-start);
+
+    >img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    >figcaption>span {
+        font-size: 24px;
+        margin-left: 16px;
+    }
+}

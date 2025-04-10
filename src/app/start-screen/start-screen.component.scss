@@ -1,13 +1,13 @@
-@use "../../globle-mixins.scss" as *;
+@use "../../global-mixins.scss" as *;
 
 section {
     background-color: #404040;
     width: 100vw;
     height: 100vh;
     max-width: 100%;
-    
+
     @include flexBox();
-};
+}
 
 .start-screen {
     background-color: red;
@@ -21,33 +21,33 @@ section {
         0px -12px 80px 0 rgba(0, 0, 0, 0.5) inset;
 
     @include flexBox($fd: true, $jc: space-around);
-};
+}
 
 .header-text {
     width: 300px;
 
     @include flexBox($fd: true);
 
-    span {
+    > span {
         color: whitesmoke;
 
         &:nth-child(1) {
             font-size: 8rem;
-        };
+        }
 
         &:nth-child(2) {
             font-size: 4rem;
-        };
+        }
 
         &:nth-child(3) {
             font-size: 7rem;
-        };
-    };
-};
+        }
+    }
+}
 
 .btn-container {
 
-    button {
+    > button {
         width: 300px;
         height: 80px;
         background: linear-gradient(to bottom right, gold, whitesmoke, gold, whitesmoke, gold);
@@ -63,6 +63,6 @@ section {
 
         span {
             font-size: xx-large;
-        };
-    };
-};
+        }
+    }
+}

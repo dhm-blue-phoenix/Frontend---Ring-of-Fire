@@ -1,14 +1,37 @@
 <section>
+    <div class="player-position">
+        @for (player of this.game.players; track $index) {
+        <app-player [name]="player"></app-player>
+        }
+    </div>
+</section>
+<section>
     <div class="field">
         <div class="card-stack">
             @for (num of [0, 1, 2, 3, 4]; track num; let i = $index) {
-            <img [style.right.px]="i * 5" src="/assets/cards/card_cover.png" alt="card">
+            <img [style.right.px]="i * 5" src="/assets/cards/card_cover.png" alt="card-stack">
             }
+            <img (click)="takeCard()" class="top-card" [style.right.px]="25" src="/assets/cards/card_cover.png"
+                alt="top-card">
+
+            <!-- Stack for played cards -->
+            @for (currentPlayer of this.game.playedCards; track $index) {
+            <img (click)="takeCard()" class="played-card" [style.right.px]="25"
+                src="/assets/cards/{{ this.game.playedCards[$index] }}.png" alt="played-card-stack">
+            }
+
+            <!-- Current card (Animation) -->
             @if (pickCardAnimation) {
-                <img (click)="takeCard()" class="pick-card" [style.right.px]="25" src="/assets/cards/ace_1.png" alt="card">
-            } @else {
-                <img (click)="takeCard()" class="top-card" [style.right.px]="25" src="/assets/cards/card_cover.png" alt="card">
+            <img (click)="takeCard()" class="pick-card" [style.right.px]="25"
+                src="/assets/cards/{{ this.game.currentCard }}.png" alt="current-card">
             }
         </div>
+    </div>
+</section>
+<section>
+    <div class="btn-add-container">
+        <button mat-fab color="primary" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+        </button>
     </div>
 </section>

@@ -1,7 +1,8 @@
-@mixin flexBox($jc: center, $ai: center, $fd: false) {
+@mixin flexBox($jc: center, $ai: center, $fd: false, $g: 0) {
     display: flex;
     justify-content: $jc;
     align-items: $ai;
+    gap: $g;
 
     @if $fd {
         flex-direction: column;

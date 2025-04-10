@@ -1,0 +1,23 @@
+@use "../../global-mixins.scss" as *;
+
+.dialog-container {
+
+    >div {
+
+        &:last-child {
+            @include flexBox($jc: space-between);
+        }
+    }
+}
+
+.form-field {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 8px;
+}
