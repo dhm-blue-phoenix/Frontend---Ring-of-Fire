@@ -1,7 +1,7 @@
 <section>
     <div class="player-position">
         @for (player of this.game.players; track $index) {
-        <app-player [name]="player"></app-player>
+        <app-player [name]="player" [playerIndex]="$index" [currentPlayer]="this.game.currentPlayer"></app-player>
         }
     </div>
 </section>
