@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Game } from '../models/game';
+import { GameService } from '../game.service';
 import { PlayerComponent } from '../player/player.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { GameInfoComponent } from '../game-info/game-info.component';
 
 @Component({
   selector: 'app-game',
@@ -14,7 +15,8 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
     CommonModule,
     PlayerComponent,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    GameInfoComponent
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
@@ -22,11 +24,9 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 
 export class GameComponent {
   public pickCardAnimation: boolean = false;
-  public game: Game;
+  public gameService = inject(GameService);
 
-  constructor(public dialog: MatDialog) {
-    this.game = new Game();
-  };
+  constructor(private dialog: MatDialog) {};
 
   /**
   * Aktiviert die Kartenzieh-Animation und fügt die aktuelle Karte nach einer Verzögerung zu den gespielten Karten hinzu.
@@ -37,7 +37,7 @@ export class GameComponent {
     this.pickCardAnimation = true;
 
     setTimeout(() => {
-      this.game.playedCards.push(this.game.currentCard);
+      this.gameService.playedCards.push(this.gameService.currentCard);
       this.pickCardAnimation = false;
     }, 1000);
   };
@@ -49,8 +49,10 @@ export class GameComponent {
   */
   public takeCard(): void {
     if (!this.pickCardAnimation) {
-      this.game.setCurrentCard();
+      this.gameService.setCurrentCard();
       this.setPickCardAnimation();
+      this.gameService.setInfo();
+      this.gameService.setNextPlayer();
     };
   };
 
@@ -59,17 +61,12 @@ export class GameComponent {
   * @public
   */
   public openDialog(): void {
-    // IN ENTWICKLUNG
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      if (this.game.players.length <= 5 && name) {
-        this.game.players.push(name);
+      if (this.gameService.players.length <= 5 && name.length > 0) {
+        this.gameService.players.push(name);
       };
     });
   };
-
-
-
-  
 };

@@ -1,7 +1,7 @@
 <section>
     <div class="player-position">
-        @for (player of this.game.players; track $index) {
-        <app-player [name]="player" [playerIndex]="$index" [currentPlayer]="this.game.currentPlayer"></app-player>
+        @for (player of this.gameService.players; track $index) {
+        <app-player [name]="player" [playerIndex]="$index" [currentPlayer]="this.gameService.currentPlayer"></app-player>
         }
     </div>
 </section>
@@ -15,15 +15,15 @@
                 alt="top-card">
 
             <!-- Stack for played cards -->
-            @for (currentPlayer of this.game.playedCards; track $index) {
-            <img (click)="takeCard()" class="played-card" [style.right.px]="25"
-                src="/assets/cards/{{ this.game.playedCards[$index] }}.png" alt="played-card-stack">
+            @for (currentPlayer of this.gameService.playedCards; track $index) {
+            <img class="played-card" [style.right.px]="25"
+                src="/assets/cards/{{ this.gameService.playedCards[$index] }}.png" alt="played-card-stack">
             }
 
             <!-- Current card (Animation) -->
             @if (pickCardAnimation) {
-            <img (click)="takeCard()" class="pick-card" [style.right.px]="25"
-                src="/assets/cards/{{ this.game.currentCard }}.png" alt="current-card">
+            <img class="pick-card" [style.right.px]="25"
+                src="/assets/cards/{{ this.gameService.currentCard }}.png" alt="current-card">
             }
         </div>
     </div>
@@ -34,4 +34,7 @@
             <mat-icon>add</mat-icon>
         </button>
     </div>
+</section>
+<section>
+    <app-game-info class="pin-bottom"></app-game-info>
 </section>

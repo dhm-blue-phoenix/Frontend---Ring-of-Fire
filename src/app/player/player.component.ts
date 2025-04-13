@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,30 +11,32 @@ import { CommonModule } from '@angular/common';
   styleUrl: './player.component.scss'
 })
 
-export class PlayerComponent implements OnInit, OnChanges {
+export class PlayerComponent implements OnChanges {
   @Input() name: string = '';
   @Input() playerIndex: number = 0;
   @Input() currentPlayer: number = 0;
 
   public activPlayer: boolean = false;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {
-    this.updateActivePlayer();
-  }
-
+  /**
+  * Reagiert auf Änderungen von Eingabewerten der Komponente.
+  * Wenn sich `currentPlayer` oder `playerIndex` ändern, wird der aktive Spieler aktualisiert.
+  * 
+  * @param changes - Ein Objekt, das die geänderten Eingabewerte enthält.
+  */
   ngOnChanges(changes: SimpleChanges): void {
-    // Reagiere auf Änderungen von currentPlayer oder playerIndex
     if (changes['currentPlayer'] || changes['playerIndex']) {
       this.updateActivePlayer();
     }
   }
 
+  /**
+  * Aktualisiert den aktiven Spielerstatus.
+  * Setzt `activPlayer` auf `true`, wenn `playerIndex` dem `currentPlayer` entspricht.
+  */
   private updateActivePlayer(): void {
     this.activPlayer = this.playerIndex === this.currentPlayer;
-    console.log('Player Index:', this.playerIndex);
-    console.log('Current Player:', this.currentPlayer);
-    console.log('Active Player:', this.activPlayer);
   }
 };

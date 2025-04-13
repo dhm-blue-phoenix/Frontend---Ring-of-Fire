@@ -24,7 +24,5 @@ import { MatButtonModule } from '@angular/material/button';
 export class DialogAddPlayerComponent {
   public name: string = '';
 
-  constructor() { };
-
-  public onNoClick(): void { };
+  constructor() { }
 };
