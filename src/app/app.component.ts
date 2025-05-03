@@ -11,5 +11,5 @@ import { RouterOutlet } from '@angular/router';
 })
 
 export class AppComponent {
-  title = 'ringOfFire';
+  title = 'ringoffire';
 };

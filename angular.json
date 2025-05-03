@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ringOfFire": {
+    "ringoffire": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ringOfFire:build:production"
+              "buildTarget": "ringoffire:build:production"
             },
             "development": {
-              "buildTarget": "ringOfFire:build:development"
+              "buildTarget": "ringoffire:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -110,5 +110,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9c6491a7-4f2f-4772-af5c-bbaf4fc59baa"
   }
 }

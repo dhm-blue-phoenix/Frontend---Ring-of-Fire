@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { GameService } from '../game.service';
+import { GameService } from '../game.services';
 
 @Component({
   selector: 'app-game-info',

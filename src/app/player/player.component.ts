@@ -23,7 +23,6 @@ export class PlayerComponent implements OnChanges {
   /**
   * Reagiert auf Änderungen von Eingabewerten der Komponente.
   * Wenn sich `currentPlayer` oder `playerIndex` ändern, wird der aktive Spieler aktualisiert.
-  * 
   * @param changes - Ein Objekt, das die geänderten Eingabewerte enthält.
   */
   ngOnChanges(changes: SimpleChanges): void {

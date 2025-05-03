@@ -21,7 +21,7 @@
             }
 
             <!-- Current card (Animation) -->
-            @if (pickCardAnimation) {
+            @if (gameService.pickCardAnimation) {
             <img class="pick-card" [style.right.px]="25"
                 src="/assets/cards/{{ this.gameService.currentCard }}.png" alt="current-card">
             }
