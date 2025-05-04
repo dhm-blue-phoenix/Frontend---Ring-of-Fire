@@ -26,7 +26,7 @@ section {
 .header-text {
     width: 300px;
 
-    @include flexBox($fd: true);
+    @include flexBox($fd: true, $g: 64px);
 
     > span {
         color: whitesmoke;
